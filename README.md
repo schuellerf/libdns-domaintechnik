@@ -33,3 +33,10 @@ err := provider.Ping(ctx)
 Caddy (and other libdns clients) pass a relative name `_acme-challenge` and a zone such as `schueller.pro.`. This package sends `name=_acme-challenge.schueller.pro` and `value=<TXT>` as `application/x-www-form-urlencoded`, with `Authorization: Bearer <token>`.
 
 For Caddy, use [`github.com/schuellerf/caddy-dns-domaintechnik`](https://github.com/schuellerf/caddy-dns-domaintechnik).
+
+## Testing
+
+`go test ./...` uses an httptest server. It does not call Domaintechnik.
+
+`Ping` / `POST …/ping` checks a real token and does not create DNS records.
+
